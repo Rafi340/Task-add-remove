@@ -8,6 +8,9 @@ let addWork = document.querySelector('#input_list');
 
 //form.addEventListener('submit', inputWork );
 form.addEventListener('submit', inputWork);
+workList.addEventListener('click', rmvWork);
+clearbtn.addEventListener('click', rmvAll);
+
 
 function inputWork(e){
     if(addWork.value === '')
@@ -25,4 +28,20 @@ function inputWork(e){
         addWork.value='';
     }
     e.preventDefault();
+}
+
+function rmvWork(e){
+    if(e.target.hasAttribute("href")){
+        if(confirm("are you Sure?")){
+            let el = e.target.parentElement;
+            el.remove();
+            //console.log(el);
+        }
+    }
+    //console.log(e.target);
+}
+function rmvAll(e){
+    while(workList.firstChild){
+        workList.removeChild(workList.firstChild);
+    }
 }
